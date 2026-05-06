@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>U.S. History Jeopardy #2</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: navy;
+  color: gold;
+  text-align: center;
+}
+
+table {
+  margin: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 90%;
+}
+
+th {
+  border: 2px solid white;
+  width: 20%;
+  height: 90px;
+  padding: 15px;
+  background: #001a66;
+  color: white;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+td {
+  border: 2px solid white;
+  width: 20%;
+  height: 90px;
+  padding: 20px;
+  background: #0059ff;
+  color: gold;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+td.used {
+  background: black;
+  cursor: default;
+}
+
+td:hover { background: #3380ff; }
+
+#questionBox {
+  display: none;
+  margin-top: 40px;
+  font-size: 30px;
+}
+
+button {
+  background: gold;
+  color: navy;
+  border: none;
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background: #ffd700;
+}
+</style>
+</head>
+
+<body>
+
+<h1>U.S. History Review – Jeopardy #2</h1>
+<button onclick="resetGame()">Reset Game</button>
+
+<table>
+<tr>
+  <th>Great Depression</th>
+  <th>Cold War</th>
+  <th>Imperialism & WWI</th>
+  <th>World War II</th>
+  <th>Roaring Twenties</th>
+</tr>
+
+<tr>
+  <td onclick="showQ(0,this)">100</td>
+  <td onclick="showQ(1,this)">100</td>
+  <td onclick="showQ(2,this)">100</td>
+  <td onclick="showQ(3,this)">100</td>
+  <td onclick="showQ(4,this)">100</td>
+</tr>
+
+<tr>
+  <td onclick="showQ(5,this)">200</td>
+  <td onclick="showQ(6,this)">200</td>
+  <td onclick="showQ(7,this)">200</td>
+  <td onclick="showQ(8,this)">200</td>
+  <td onclick="showQ(9,this)">200</td>
+</tr>
+
+<tr>
+  <td onclick="showQ(10,this)">300</td>
+  <td onclick="showQ(11,this)">300</td>
+  <td onclick="showQ(12,this)">300</td>
+  <td onclick="showQ(13,this)">300</td>
+  <td onclick="showQ(14,this)">300</td>
+</tr>
+
+<tr>
+  <td onclick="showQ(15,this)">400</td>
+  <td onclick="showQ(16,this)">400</td>
+  <td onclick="showQ(17,this)">400</td>
+  <td onclick="showQ(18,this)">400</td>
+  <td onclick="showQ(19,this)">400</td>
+</tr>
+</table>
+
+<div id="questionBox">
+  <div id="qText"></div>
+  <div id="aText" style="display:none;"></div>
+  <button onclick="showA()">Show Answer</button>
+  <button onclick="closeQ()">Close</button>
+</div>
+
+<script>
+const data = [
+ {q:"Main cause of the stock market crash of 1929",a:"What is overproduction?"},
+ {q:"U.S. foreign policy to stop communism",a:"What is containment?"},
+ {q:"U.S. ship whose sinking led to the Spanish-American War",a:"What is the Maine?"},
+ {q:"Symbol of women working in WWII factories",a:"Who is Rosie the Riveter?"},
+ {q:"Woman who challenged gender norms in the 1920s",a:"Who is a flapper?"},
+
+ {q:"Shantytowns during the Great Depression",a:"What are Hoovervilles?"},
+ {q:"U.S. promise to defend nations from communism",a:"What is the Truman Doctrine?"},
+ {q:"Three territories gained after the Spanish-American War",a:"What are Puerto Rico, the Philippines, and Guam?"},
+ {q:"Limiting consumer goods during WWII",a:"What is rationing?"},
+ {q:"Trial over teaching evolution",a:"What is the Scopes Trial?"},
+
+ {q:"Region affected by the Dust Bowl",a:"What are the Great Plains?"},
+ {q:"Communist witch hunts of the 1950s",a:"What is McCarthyism?"},
+ {q:"German note to Mexico during WWI",a:"What is the Zimmerman Note?"},
+ {q:"Court case allowing Japanese internment",a:"What is Korematsu v. United States?"},
+ {q:"Amendment starting Prohibition",a:"What is the 18th Amendment?"},
+
+ {q:"FDR’s recovery programs",a:"What is the New Deal?"},
+ {q:"First satellite in the Space Race",a:"What is Sputnik?"},
+ {q:"U.S. policy of expanding influence overseas",a:"What is imperialism?"},
+ {q:"Major Allied invasion of Europe in 1944",a:"What is D-Day?"},
+ {q:"Illegal alcohol production in Prohibition",a:"What is bootlegging?"}
+];
+
+let cell=null;
+function showQ(i,c){cell=c; qText.innerText=data[i].q; aText.innerText=data[i].a;
+aText.style.display="none"; questionBox.style.display="block";}
+function showA(){aText.style.display="block";}
+function closeQ(){questionBox.style.display="none"; if(cell){cell.classList.add("used"); cell.onclick=null;}}
+<button onclick="resetGame()">Reset Game</button>
+</script>
+
+</body>
+</html>
